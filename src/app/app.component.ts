@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [RouterOutlet, NavBarComponent],  // <-- NavBar aquí
+  template: `
+    <app-nav-bar></app-nav-bar>
+    <router-outlet></router-outlet>
+  `,
 })
-export class AppComponent {
-  title = 'ConcesionariaFancy';
-}
+export class AppComponent {}

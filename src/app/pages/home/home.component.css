@@ -1,0 +1,106 @@
+/* Contenedor del video */
+.video-container {
+    position: relative;
+    height: 200px; /* Altura más compacta del contenedor */
+    overflow: hidden;
+  }
+  
+  .background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta el video al contenedor */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  
+  /* Sombra sobre el video */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Oscurecimiento del video */
+    z-index: 2;
+  }
+  
+  .title {
+    color: white;
+    font-size: 1.5rem; /* Tamaño reducido del título */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra del texto */
+    font-family: 'Segoe UI', sans-serif;
+    margin-bottom: 1rem;
+  }
+  
+  /* Elementos en paralelo */
+  .subtitle-container {
+    display: flex;
+    flex-direction: row; /* Coloca las letras en paralelo */
+    justify-content: center; /* Centra los subtítulos horizontalmente */
+    align-items: center; /* Alinea verticalmente */
+    gap: 2rem; /* Espacio entre las letras */
+    margin-top: 1rem; /* Añade un pequeño espacio superior */
+  }
+  
+  .subtitle {
+    color: white;
+    font-size: 1.2rem; /* Tamaño más compacto */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra del texto */
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+  }
+  
+  /* Navegación debajo del video */
+  .nav-below-video {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    background-color: #1b1b1b; /* Fondo oscuro */
+    border-top: 2px solid #c40000; /* Borde superior */
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.8px;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #c40000; /* Color al pasar el cursor */
+  }
+  
+  /* Diseño responsivo */
+  @media (max-width: 768px) {
+    .subtitle-container {
+      flex-direction: column; /* Ajusta las letras para pantallas pequeñas */
+      gap: 0.5rem; /* Espacio reducido */
+    }
+  
+    .title {
+      font-size: 1.2rem; /* Tamaño reducido para móviles */
+    }
+  
+    .subtitle {
+      font-size: 1rem; /* Ajusta los subtítulos para pantallas pequeñas */
+    }
+  
+    .nav-below-video {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  
+    .nav-link {
+      font-size: 0.75rem;
+    }
+  }
+  
