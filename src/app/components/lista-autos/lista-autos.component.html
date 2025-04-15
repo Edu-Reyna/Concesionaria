@@ -1,0 +1,59 @@
+<div class="container mx-auto p-6">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    @for (vehi of vehiculos; track vehi._id) {
+    <!-- Card 1 -->
+    <div
+      class="bg-black/80 rounded-lg overflow-hidden shadow-lg hover:shadow-red-500/30 transition duration-300"
+    >
+      <div class="h-48 bg-gray-800">
+        <img
+          [src]="vehi.imagen"
+          alt="Vehículo"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="p-4">
+        <h3 class="text-white font-bold text-xl mb-2">
+          {{ vehi.marca }} {{ vehi.modelo }}
+        </h3>
+        <p class="text-gray-400 mb-4">
+          ${{ vehi.precio }} | {{ vehi.anio }} | {{ vehi.kilometraje }} km
+        </p>
+        <div class="flex flex-col gap-2">
+          @if (vehi._id) {
+          <button
+            (click)="verDetalles(vehi._id)"
+            class="w-full py-2 px-4 bg-red-600 rounded-lg text-white hover:bg-red-700 transition duration-300"
+          >
+            Ver detalles
+          </button>
+          } @if (usuario?.rol == 1 && vehi._id) {
+          <button
+            (click)="comprar(vehi._id)"
+            class="w-full py-2 px-4 bg-green-600 rounded-lg text-white hover:bg-green-700 transition duration-300"
+          >
+            Comprar
+          </button>
+          }
+          <div class="flex gap-2">
+            @if (usuario?.rol == 2 && vehi._id) {
+            <button
+              (click)="modificar(vehi._id)"
+              class="w-full py-2 px-4 bg-yellow-600 rounded-lg text-white hover:bg-yellow-700 transition duration-300"
+            >
+              Modificar
+            </button>
+            <button
+              (click)="eliminar(vehi._id)"
+              class="w-full py-2 px-4 bg-red-800 rounded-lg text-white hover:bg-red-900 transition duration-300"
+            >
+              Eliminar
+            </button>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

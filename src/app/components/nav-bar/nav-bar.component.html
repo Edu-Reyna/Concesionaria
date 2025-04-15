@@ -1,0 +1,61 @@
+<nav
+  class="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-lg py-4 px-6 md:px-12 z-50"
+>
+  <div class="max-w-7xl mx-auto flex justify-between items-center w-full">
+    <!-- Logo Izquierda -->
+    <a href="#" class="flex items-center space-x-2">
+      <img
+        src="./Pagani-Logo-Transparent-File.png"
+        alt="Logo"
+        class="h-10 w-auto"
+        style="filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.4))"
+      />
+      <span class="text-white text-xl font-bold hidden md:block"
+        >Deportivos GT</span
+      >
+    </a>
+
+    <!-- Menú Central -->
+    <div class="hidden md:flex space-x-8 text-gray-300 font-semibold">
+      @if (usuario?.rol == 2) {
+      <a href="#" class="hover:text-red-500 transition duration-300"
+        >Ver Ventas</a
+      >
+      <a href="#" class="hover:text-red-500 transition duration-300"
+      >Ingresar Automóvil</a
+      >
+      } @if (usuario?.rol == 1) {
+      <a href="#" class="hover:text-red-500 transition duration-300"
+        >Ver Compras</a
+      >
+      }
+    </div>
+
+    <!-- Botones Derecha -->
+    @if (!usuario) {
+    <div class="hidden md:flex space-x-4">
+      <button
+        (click)="navigateToRegister()"
+        class="cursor-pointer py-2 px-5 bg-gradient-to-r from-red-600 to-red-700 rounded-lg text-white font-medium hover:from-red-700 transition duration-300"
+      >
+        Registrarse
+      </button>
+      <button
+        (click)="navigateToLogin()"
+        class="cursor-pointer py-2 px-5 bg-black/60 border border-red-600 rounded-lg text-white font-medium hover:bg-red-600 transition duration-300"
+      >
+        Iniciar Sesión
+      </button>
+    </div>
+    } @else{
+    <div class="hidden md:flex space-x-4">
+      <button
+        (click)="logout()"
+        class="cursor-pointer py-2 px-5 bg-black/60 border border-red-600 rounded-lg text-white font-medium hover:bg-red-600 transition duration-300"
+      >
+        Cerrar Sesión
+      </button>
+    </div>
+    }
+  </div>
+</nav>

@@ -1,0 +1,55 @@
+<div class="flex min-h-screen items-center justify-center bg-gradient-to-b from-gray-900 to-gray-800 p-4 text-center text-white">
+  <div class="w-full max-w-md rounded-2xl bg-black/80 p-6 shadow-xl">
+    <!-- Logo de concesionario -->
+    <img
+      src="./Pagani-Logo-Transparent-File.png"
+      alt="Logo"
+      class="mx-auto mb-8 w-24"
+      style="filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.5))"
+    />
+
+    <!-- Formulario con efectos de entrada -->
+    <form class="space-y-6" [formGroup]="loginForm" (submit)="login()">
+      <!-- Campo Email -->
+      <div>
+        <label class="mb-2 block text-gray-300">Email</label>
+        <input
+          type="email"
+          required
+          formControlName="email"
+          class="w-full rounded-lg border text-amber-50 border-gray-700 bg-black/60 px-4 py-3 placeholder-gray-500 transition duration-300 focus:border-red-600 focus:outline-none"
+          placeholder="usuario@dominio.com"
+        />
+      </div>
+
+      <!-- Campo Contraseña -->
+      <div>
+        <label class="mb-2 block text-gray-300">Contraseña</label>
+        <input
+          type="password"
+          required
+          formControlName="password"
+          class="w-full rounded-lg border text-amber-50 border-gray-700 bg-black/60 px-4 py-3 placeholder-gray-500 transition duration-300 focus:border-red-600 focus:outline-none"
+          placeholder="••••••••"
+        />
+      </div>
+
+      @if (loginForm.invalid) {
+      <button
+        type="submit"
+        [disabled]="loginForm.invalid"
+        class="cursor-not-allowed button-hover w-full rounded-lg border border-red-600 bg-gradient-to-r from-black to-gray-900 px-6 py-3 font-semibold text-white shadow-lg transition duration-300 hover:bg-red-600"
+      >
+        Iniciar Sesión
+      </button>
+      } @else {
+      <button
+        type="submit"
+        class="cursor-pointer button-hover w-full rounded-lg border border-red-600 bg-gradient-to-r from-black to-gray-900 px-6 py-3 font-semibold text-white shadow-lg transition duration-300 hover:bg-red-600"
+      >
+        Iniciar Sesión
+      </button>
+      }
+    </form>
+  </div>
+</div>
