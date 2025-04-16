@@ -1,15 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RegistrarseService } from '../../services/registrarse.service';
 import { Router } from '@angular/router';
+import { DialogRef } from '@angular/cdk/dialog';
 
 @Component({
-  selector: 'app-form-registrarse',
+  selector: 'app-form-vendedor',
   imports: [ReactiveFormsModule],
-  templateUrl: './form-registrarse.component.html',
-  styleUrl: './form-registrarse.component.css'
+  templateUrl: './form-vendedor.component.html',
+  styleUrl: './form-vendedor.component.css'
 })
-export class FormRegistrarseComponent {
+export class FormVendedorComponent {
+
+  private dialogRef = inject(DialogRef, { optional: true });
+  
   registrerForm: FormGroup;
   nombre: FormControl;
   apellido: FormControl;
@@ -17,12 +21,12 @@ export class FormRegistrarseComponent {
   password: FormControl;
   rol: FormControl;
 
-  constructor(public registrarseService: RegistrarseService, private router: Router) {
+  constructor(public registrarseService: RegistrarseService) {
     this.nombre = new FormControl('');
     this.apellido = new FormControl('');
     this.email = new FormControl('');
     this.password = new FormControl('');
-    this.rol = new FormControl(1);
+    this.rol = new FormControl(2);
 
     this.registrerForm = new FormGroup({
       nombre: this.nombre,
@@ -35,12 +39,11 @@ export class FormRegistrarseComponent {
 
   registrar() {
     console.log(this.registrerForm.value);
-    this.registrarseService.register(this.nombre.value, this.apellido.value, this.email.value, this.password.value, this.rol.value).subscribe({
+    this.registrarseService.registerAdmin(this.nombre.value, this.apellido.value, this.email.value, this.password.value, this.rol.value).subscribe({
       next: (response) => {
         console.log('Registro exitoso', response);
         alert('Registro exitoso');
-        this.router.navigate(['/login']);
-
+        this.closeDialog();
       },
       error: (error) => {
         console.error('Error al registrar', error);
@@ -49,4 +52,7 @@ export class FormRegistrarseComponent {
     });
   }
 
+  closeDialog() {
+    this.dialogRef?.close();
+  }
 }

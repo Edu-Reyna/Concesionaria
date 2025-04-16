@@ -3,7 +3,7 @@
 >
   <div class="max-w-7xl mx-auto flex justify-between items-center w-full">
     <!-- Logo Izquierda -->
-    <a href="#" class="flex items-center space-x-2">
+    <a routerLink="/" class="flex items-center space-x-2">
       <img
         src="./Pagani-Logo-Transparent-File.png"
         alt="Logo"
@@ -18,14 +18,18 @@
     <!-- Menú Central -->
     <div class="hidden md:flex space-x-8 text-gray-300 font-semibold">
       @if (usuario?.rol == 2) {
-      <a href="#" class="hover:text-red-500 transition duration-300"
+      <a routerLink="/venta" class="cursor-pointer hover:text-red-500 transition duration-300"
         >Ver Ventas</a
       >
-      <a href="#" class="hover:text-red-500 transition duration-300"
+      <a (click)="saveCars()" class="cursor-pointer hover:text-red-500 transition duration-300"
       >Ingresar Automóvil</a
       >
-      } @if (usuario?.rol == 1) {
-      <a href="#" class="hover:text-red-500 transition duration-300"
+      <a (click)="saveVendedor()" class="cursor-pointer hover:text-red-500 transition duration-300"
+        >Ingresar Vendedor</a
+      >
+      }
+       @if (usuario?.rol == 1) {
+      <a routerLink="/venta" class="cursor-pointer hover:text-red-500 transition duration-300"
         >Ver Compras</a
       >
       }

@@ -1,0 +1,103 @@
+@if(usuario?.rol == 1){
+  <div class="max-w-md mx-auto bg-black/80 rounded-lg shadow-lg overflow-hidden hover:shadow-red-500/30 transition duration-300 mb-6">
+    <!-- Header con datos del cliente -->
+    @for (ven of venta; track ven._id) {
+    <div class="p-4 border-b border-gray-700">
+      <h3 class="text-white font-bold text-xl">Venta</h3>
+      <p class="text-gray-400 mt-2">vendedor: <span class="font-medium">{{ ven.vendedor.nombre }} {{ven.vendedor.apellido}}</span></p>
+    </div>
+  
+    <!-- Contenido principal -->
+    <div class="p-4 grid grid-cols-2 gap-4">
+      <!-- Datos del vehículo -->
+      <div class="col-span-2 md:col-span-1">
+        <p class="text-gray-400 mb-2">Vehículo</p>
+        <div class="space-y-2">
+          <div class="flex justify-between text-white">
+            <span>Marca</span>
+            <span class="font-bold">{{  ven.auto.marca }}</span>
+          </div>
+          <div class="flex justify-between text-white">
+            <span>Modelo</span>
+            <span class="font-bold">{{  ven.auto.modelo }}</span>
+          </div>
+          <div class="flex justify-between text-white">
+            <span>Año</span>
+            <span class="font-bold">{{  ven.auto.anio }}</span>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Precio y estado -->
+      <div class="col-span-2 md:col-span-1">
+        <p class="text-gray-400 mb-2">Detalles de venta</p>
+        <div class="space-y-2">
+          <div class="flex justify-between text-white">
+            <span>Precio final</span>
+            <span class="text-red-500 font-bold text-xl">${{  ven.precio_final }}</span>
+          </div>
+          <div class="flex justify-between text-white">
+            <span>Estado</span>
+            <span class="px-3 py-1 bg-green-600 rounded-full text-xs">{{  ven.auto.estado }}</span>
+          </div>
+          <div class="flex justify-between text-gray-400">
+            <span>Fecha</span>
+            <span>{{ ven.fecha_venta }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+  </div>
+}@else if (usuario?.rol == 2){
+<div class="max-w-md mx-auto bg-black/80 rounded-lg shadow-lg overflow-hidden hover:shadow-red-500/30 transition duration-300 mb-6">
+  <!-- Header con datos del cliente -->
+  @for (ven of venta; track ven._id) {
+  <div class="p-4 border-b border-gray-700">
+    <h3 class="text-white font-bold text-xl">Venta</h3>
+    <p class="text-gray-400 mt-2">Cliente: <span class="font-medium">{{ ven.comprador.nombre }} {{ven.comprador.apellido}}</span></p>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="p-4 grid grid-cols-2 gap-4">
+    <!-- Datos del vehículo -->
+    <div class="col-span-2 md:col-span-1">
+      <p class="text-gray-400 mb-2">Vehículo</p>
+      <div class="space-y-2">
+        <div class="flex justify-between text-white">
+          <span>Marca</span>
+          <span class="font-bold">{{  ven.auto.marca }}</span>
+        </div>
+        <div class="flex justify-between text-white">
+          <span>Modelo</span>
+          <span class="font-bold">{{  ven.auto.modelo }}</span>
+        </div>
+        <div class="flex justify-between text-white">
+          <span>Año</span>
+          <span class="font-bold">{{  ven.auto.anio }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Precio y estado -->
+    <div class="col-span-2 md:col-span-1">
+      <p class="text-gray-400 mb-2">Detalles de venta</p>
+      <div class="space-y-2">
+        <div class="flex justify-between text-white">
+          <span>Precio final</span>
+          <span class="text-red-500 font-bold text-xl">${{  ven.precio_final }}</span>
+        </div>
+        <div class="flex justify-between text-white">
+          <span>Estado</span>
+          <span class="px-3 py-1 bg-green-600 rounded-full text-xs">{{  ven.auto.estado }}</span>
+        </div>
+        <div class="flex justify-between text-gray-400">
+          <span>Fecha</span>
+          <span>{{ ven.fecha_venta }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+</div>
+}

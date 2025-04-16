@@ -1,5 +1,5 @@
 export default interface IusuarioModel {
-    id?: number;
+    _id?: string;
     nombre: string;
     apellido: string;
     email: string;

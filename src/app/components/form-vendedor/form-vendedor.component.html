@@ -1,0 +1,74 @@
+
+<!-- Modal -->
+<div id="modal-registro" class="modal fixed inset-0 z-50">
+    <div class="modal-overlay absolute w-full h-full bg-black/80"></div>
+    <div class="modal-container relative max-w-md mx-auto my-10">
+      <div class="modal-content bg-black/90 rounded-lg shadow-2xl overflow-hidden">
+        <!-- Header -->
+        <div class="modal-header p-6 border-b border-gray-700">
+          <h3 class="text-white text-2xl font-bold">Registrar Usuario</h3>
+        </div>
+  
+        <!-- Formulario -->
+        <form class="p-6 space-y-6" id="registroForm" (submit)="registrar()" [formGroup]="registrerForm">
+          <!-- Nombre y Apellido -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-gray-300 mb-2">Nombre</label>
+              <input type="text" name="nombre" required formControlName="nombre"
+                     class="text-white w-full px-4 py-3 bg-black/60 border border-gray-700 
+                            rounded-lg focus:outline-none focus:border-red-600 
+                            placeholder-gray-500 transition duration-300">
+            </div>
+            <div>
+              <label class="block text-gray-300 mb-2">Apellido</label>
+              <input type="text" name="apellido" required formControlName="apellido"
+                     class="text-white w-full px-4 py-3 bg-black/60 border border-gray-700 
+                            rounded-lg focus:outline-none focus:border-red-600 
+                            placeholder-gray-500 transition duration-300">
+            </div>
+          </div>
+  
+          <!-- Email -->
+          <div>
+            <label class="block text-gray-300 mb-2">Email</label>
+            <input type="email" name="email" required formControlName="email"
+                   class="text-white w-full px-4 py-3 bg-black/60 border border-gray-700 
+                          rounded-lg focus:outline-none focus:border-red-600 
+                          placeholder-gray-500 transition duration-300">
+          </div>
+  
+          <!-- Contraseña -->
+          <div>
+            <label class="block text-gray-300 mb-2">Contraseña</label>
+            <div class="relative">
+              <input type="password" name="password" required formControlName="password"
+                     class="text-white w-full px-4 py-3 bg-black/60 border border-gray-700 
+                            rounded-lg focus:outline-none focus:border-red-600 
+                            placeholder-gray-500 transition duration-300">
+            </div>
+          </div>
+  
+          <!-- Acciones -->
+          <div class="flex justify-end gap-4">
+            <button type="button" (click)="closeDialog()" class="cursor-pointer modal-close px-4 py-2 bg-gray-700 
+                                         rounded-lg hover:bg-gray-600 transition">
+              Cancelar
+            </button>
+            <button type="submit" class="cursor-pointer px-4 py-2 bg-red-600 rounded-lg 
+                                         hover:bg-red-700 transition relative">
+              <span>Registrar</span>
+              <div class="absolute right-0 inset-y-0 flex items-center">
+                <svg class="w-4 h-4 ml-2 animate-spin hidden" id="loadingSpinner" fill="none" 
+                     viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" 
+                          stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 0012 20c4.411 0 8-3.589 8-8 0-1.033-.21-.618-.593-.926l-3.795-3.795a1 1 0 00-1.414 0l-3.795 3.795c-.377.377-.727.593-1.074.593H4v4.291z"></path>
+                </svg>
+              </div>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

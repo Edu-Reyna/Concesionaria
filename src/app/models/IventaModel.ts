@@ -1,5 +1,5 @@
 export default interface IventaModel {
-    id?: number;
+    _id?: string;
     auto: string;
     vendedor: string;
     comprador: string;  

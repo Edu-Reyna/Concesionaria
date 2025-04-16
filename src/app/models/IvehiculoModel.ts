@@ -5,7 +5,7 @@ export default interface IvehiculoModel {
     precio : String;
     anio : Number;
     kilometraje : String;
-    imagen : String;
+    imagen : File | String;
     tipo : String;
     transmision : String;
     combustible : String;

@@ -1,0 +1,65 @@
+<!-- Modal de Compra -->
+<div id="modal-compra" class="modal fixed inset-0 z-50">
+    <div class="modal-overlay absolute h-full w-full bg-black/80"></div>
+    <div class="modal-container relative mx-auto my-10 max-w-lg">
+      <div class="modal-content overflow-hidden rounded-lg bg-black/90 shadow-2xl">
+        <!-- Header -->
+        <div class="modal-header border-b border-gray-700 p-6">
+          <h3 class="text-2xl font-bold text-white">Confirmar Compra</h3>
+          <button class="modal-close text-gray-400 transition hover:text-white">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+  
+        <form action="" [formGroup]="empleadoForm" (submit)="venta()" class="space-y-6">
+        <!-- Cuerpo -->
+        <div class="space-y-6 p-6">
+          <!-- Selector de vendedor [[3]] -->
+          <div>
+            <label class="mb-2 block text-gray-300">Vendedor</label>
+            <select required formControlName="vendedorSeleccionado" class="w-full rounded-lg border border-gray-700 bg-black/60 px-4 py-3 text-gray-300 focus:border-red-600 focus:outline-none">
+              <option value="">Seleccionar</option>
+              @for (ven of vendedores; track ven._id) {
+              <option [value]="ven._id">{{ ven.nombre }}</option>
+              }
+            </select>
+          </div>
+  
+          <!-- Detalles del vehículo -->
+          <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div>
+              <label class="mb-2 block text-gray-300">Vehículo</label>
+              <input type="text" [value]="vehiculo?.marca" formControlName="marca" readonly class="w-full cursor-not-allowed rounded-lg border border-gray-700 bg-black/40 px-4 py-3 text-white" />
+            </div>
+            <div>
+              <label class="mb-2 block text-gray-300">Precio</label>
+              <input type="text" [value]="vehiculo?.precio" formControlName="precio" readonly class="w-full cursor-not-allowed rounded-lg border border-gray-700 bg-black/40 px-4 py-3 font-bold text-red-500" />
+            </div>
+          </div>
+
+          <!-- Imagen del vehículo -->
+          <div class="flex justify-center">
+            <img [src]="vehiculo?.imagen" alt="Vehículo" class="h-48 w-64 rounded-lg object-cover" />
+          </div>
+        </div>
+  
+        <!-- Acciones -->
+        <div class="modal-footer flex justify-end gap-4 p-6">
+          <button type="button" (click)="closeDialog()" class="modal-close rounded-lg bg-gray-700 px-4 py-2 transition hover:bg-gray-600">Cancelar</button>
+          <button type="submit" class="relative rounded-lg bg-red-600 px-4 py-2 transition hover:bg-red-700">
+            <span>Comprar</span>
+            <div class="absolute inset-y-0 right-0 flex items-center">
+              <svg class="ml-2 hidden h-4 w-4 animate-spin" id="loadingCompra" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 0012 20c4.411 0 8-3.589 8-8 0-1.033-.21-.618-.593-.926l-3.795-3.795a1 1 0 00-1.414 0l-3.795 3.795c-.377.377-.727.593-1.074.593H4v4.291z"></path>
+              </svg>
+            </div>
+          </button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

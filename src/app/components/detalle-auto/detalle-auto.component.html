@@ -1,0 +1,57 @@
+<div id="modal-1" class="modal fixed inset-0 z-50">
+    <!-- Overlay -->
+    <div class="modal-overlay absolute h-full w-full bg-black/80"></div>
+  
+    <!-- Contenido -->
+    <div class="modal-container relative mx-auto my-10 max-w-3xl">
+      <div class="modal-content overflow-hidden rounded-lg bg-black/90 shadow-2xl">
+        <!-- Header -->
+        <div class="modal-header flex items-center justify-between border-b border-gray-700 p-6">
+          <h3 class="text-2xl font-bold text-white">{{ vehiculo?.marca }} {{ vehiculo?.modelo }}</h3>
+          <button class="modal-close text-gray-400 transition hover:text-white" (click)="closeDialog()">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+  
+        <!-- Cuerpo -->
+        <div class="grid grid-cols-1 gap-6 p-6 md:grid-cols-2">
+          <!-- Imagen principal -->
+          <div class="col-span-full md:col-span-1">
+            <img [src]="vehiculo?.imagen" alt="Vehículo" class="h-64 w-full rounded-lg object-cover" />
+          </div>
+  
+          <!-- Especificaciones -->
+          <div class="space-y-4">
+            <div class="flex justify-between text-gray-300">
+              <span>Precio</span>
+              <span class="font-bold text-red-500">${{ vehiculo?.precio }}</span>
+            </div>
+            <div class="flex justify-between text-gray-300">
+              <span>Año</span>
+              <span>{{ vehiculo?.anio }}</span>
+            </div>
+            <div class="flex justify-between text-gray-300">
+              <span>Kilometraje</span>
+              <span>{{ vehiculo?.kilometraje }} km</span>
+            </div>
+            <div class="flex justify-between text-gray-300">
+              <span>Transmisión</span>
+              <span>{{ vehiculo?.transmision }}</span>
+            </div>
+            <div class="flex justify-between text-gray-300">
+              <span>Combustible</span>
+              <span>{{ vehiculo?.combustible }}</span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Descripción -->
+        <div class="border-t border-gray-700 p-6">
+          <h4 class="mb-2 font-semibold text-white">Descripción</h4>
+          <p class="text-gray-400">{{ vehiculo?.descripcion }}</p>
+        </div>
+      </div>
+    </div>
+  </div>

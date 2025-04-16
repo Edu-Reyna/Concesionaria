@@ -23,14 +23,14 @@
           @if (vehi._id) {
           <button
             (click)="verDetalles(vehi._id)"
-            class="w-full py-2 px-4 bg-red-600 rounded-lg text-white hover:bg-red-700 transition duration-300"
+            class="cursor-pointer w-full py-2 px-4 bg-red-600 rounded-lg text-white hover:bg-red-700 transition duration-300"
           >
             Ver detalles
           </button>
           } @if (usuario?.rol == 1 && vehi._id) {
           <button
             (click)="comprar(vehi._id)"
-            class="w-full py-2 px-4 bg-green-600 rounded-lg text-white hover:bg-green-700 transition duration-300"
+            class="cursor-pointer w-full py-2 px-4 bg-green-600 rounded-lg text-white hover:bg-green-700 transition duration-300"
           >
             Comprar
           </button>
@@ -39,13 +39,13 @@
             @if (usuario?.rol == 2 && vehi._id) {
             <button
               (click)="modificar(vehi._id)"
-              class="w-full py-2 px-4 bg-yellow-600 rounded-lg text-white hover:bg-yellow-700 transition duration-300"
+              class="cursor-pointer w-full py-2 px-4 bg-yellow-600 rounded-lg text-white hover:bg-yellow-700 transition duration-300"
             >
               Modificar
             </button>
             <button
               (click)="eliminar(vehi._id)"
-              class="w-full py-2 px-4 bg-red-800 rounded-lg text-white hover:bg-red-900 transition duration-300"
+              class="cursor-pointer w-full py-2 px-4 bg-red-800 rounded-lg text-white hover:bg-red-900 transition duration-300"
             >
               Eliminar
             </button>

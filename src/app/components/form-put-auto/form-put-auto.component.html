@@ -1,0 +1,214 @@
+<!-- Modal -->
+<div id="modal-crear" class="modal fixed inset-0 z-50">
+  <div class="modal-overlay absolute h-full w-full bg-black/80"></div>
+  <div class="modal-container relative mx-auto my-10 max-w-2xl">
+    @if (autoForm) {
+    <div
+      class="modal-content overflow-hidden rounded-lg bg-black/90 shadow-2xl"
+    >
+      <!-- Header -->
+      <div class="modal-header border-b border-gray-700 p-6">
+        <h3 class="text-2xl font-bold text-white">Registrar Nuevo Vehículo</h3>
+      </div>
+
+      <div class="modal-body max-h-[80vh] overflow-y-auto p-6">
+        <!-- Formulario -->
+        <form
+          class="space-y-6 p-6"
+          enctype="multipart/form-data"
+          [formGroup]="autoForm"
+          (ngSubmit)="putAuto()"
+        >
+          <!-- Fila 1: Marca y Modelo -->
+          <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div>
+              <label class="mb-2 block text-gray-300">Marca</label>
+              <input
+                type="text"
+                formControlName="marca"
+                name="marca"
+                required
+                class="w-full rounded-lg border text-white border-gray-700 bg-black/60 px-4 py-3 placeholder-gray-500 transition duration-300 focus:border-red-600 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label class="mb-2 block text-gray-300">Modelo</label>
+              <input
+                type="text"
+                formControlName="modelo"
+                name="modelo"
+                required
+                class="w-full text-white rounded-lg border border-gray-700 bg-black/60 px-4 py-3 placeholder-gray-500 transition duration-300 focus:border-red-600 focus:outline-none"
+              />
+            </div>
+          </div>
+
+          <!-- Fila 2: Año y Kilometraje -->
+          <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div>
+              <label class="mb-2 block text-gray-300">Año</label>
+              <input
+                type="number"
+                formControlName="anio"
+                name="anio"
+                required
+                min="1900"
+                max="2025"
+                class="w-full rounded-lg border text-white border-gray-700 bg-black/60 px-4 py-3 placeholder-gray-500 transition duration-300 focus:border-red-600 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label class="mb-2 block text-gray-300">Kilometraje</label>
+              <input
+                type="text"
+                formControlName="kilometraje"
+                name="kilometraje"
+                required
+                class="w-full rounded-lg border text-white border-gray-700 bg-black/60 px-4 py-3 placeholder-gray-500 transition duration-300 focus:border-red-600 focus:outline-none"
+              />
+            </div>
+          </div>
+          <!-- Fila 4: Precio y Tipo -->
+          <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div>
+              <label class="mb-2 block text-gray-300">Precio</label>
+              <input
+                type="number"
+                formControlName="precio"
+                name="precio"
+                required
+                min="0"
+                class="w-full rounded-lg border text-white border-gray-700 bg-black/60 px-4 py-3 placeholder-gray-500 transition duration-300 focus:border-red-600 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label class="mb-2 block text-gray-300">Tipo</label>
+              <select
+                formControlName="tipo"
+                name="tipo"
+                required
+                class="w-full rounded-lg border border-gray-700 bg-black/60 px-4 py-3 text-gray-300 focus:border-red-600 focus:outline-none"
+              >
+                <option value="">Seleccionar</option>
+                <option value="Sedán">Sedán</option>
+                <option value="SUV">SUV</option>
+                <option value="Camioneta">Camioneta</option>
+                <option value="Deportivo">Deportivo</option>
+                <option value="Hatchback">Hatchback</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Fila 3: Transmisión y Combustible -->
+          <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div>
+              <label class="mb-2 block text-gray-300">Transmisión</label>
+              <select
+                formControlName="transmision"
+                name="transmision"
+                required
+                class="w-full rounded-lg border border-gray-700 bg-black/60 px-4 py-3 text-gray-300 focus:border-red-600 focus:outline-none"
+              >
+                <option value="">Seleccionar</option>
+                @for (valor of ['Automático', 'Manual']; track $index) {
+                <option  [ngValue]="valor">{{ valor }}</option>
+                }
+              </select>
+            </div>
+            <div>
+              <label class="mb-2 block text-gray-300">Combustible</label>
+              <select
+                name="combustible"
+                formControlName="combustible"
+                required
+                class="w-full rounded-lg border border-gray-700 bg-black/60 px-4 py-3 text-gray-300 focus:border-red-600 focus:outline-none"
+              >
+                <option value="">Seleccionar</option>
+                <option value="Gasolina">Gasolina</option>
+                <option value="Diésel">Diésel</option>
+                <option value="Eléctrico">Eléctrico</option>
+              </select>
+            </div>
+          </div>
+
+            <!-- Fila 5: Estado -->
+          <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div>
+              <label class="mb-2 block text-gray-300">Estado</label>
+              <select
+                formControlName="estado"
+                name="estado"
+                required
+                class="w-full rounded-lg border border-gray-700 bg-black/60 px-4 py-3 text-gray-300 focus:border-red-600 focus:outline-none"
+              >
+                <option value="">Seleccionar</option>
+                @for (valor of ['Disponible', 'Vendido']; track $index) {
+                <option  [ngValue]="valor">{{ valor }}</option>
+                }
+              </select>
+            </div>
+          </div>
+
+          <!-- Imagen -->
+          <div>
+            <label class="mb-2 block text-gray-300">Imagen</label>
+            <div class="flex items-center gap-4">
+              <input
+                type="file"
+                name="imagen"
+                formControlName="imagen"
+                (change)="onFileSelected($event)"
+                accept="image/*"
+                class="hidden"
+                id="imagenInput"
+              />
+              <label
+                for="imagenInput"
+                class="cursor-pointer rounded-lg bg-red-600 px-4 py-2 transition duration-300 hover:bg-red-700"
+              >
+                Seleccionar archivo
+              </label>
+              @if (!imagen) {
+              <span class="text-gray-400" id="nombreArchivo"
+                >Ningún archivo seleccionado</span
+              >
+              }
+            </div>
+          </div>
+
+          <!-- Descripción -->
+          <div>
+            <label class="mb-2 block text-gray-300">Descripción</label>
+            <textarea
+              name="descripcion"
+              rows="3"
+              formControlName="descripcion"
+              placeholder="Descripción del vehículo"
+              required
+              class="w-full rounded-lg border text-white border-gray-700 bg-black/60 px-4 py-3 placeholder-gray-500 transition duration-300 focus:border-red-600 focus:outline-none"
+            ></textarea>
+          </div>
+
+          <!-- Acciones -->
+          <div class="flex justify-end gap-4">
+            <button
+              (click)="closeDialog()"
+              type="button"
+              class="cursor-pointer modal-close rounded-lg bg-gray-700 px-4 py-2 transition hover:bg-gray-600"
+            >
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              class="cursor-pointer rounded-lg bg-red-600 px-4 py-2 transition hover:bg-red-700"
+            >
+              Modificar Vehículo
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+}
+  </div>
+</div>
+
